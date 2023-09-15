@@ -111,6 +111,6 @@ while not correct_server:
 
         Write.Print(f"\nThe server will start in 5 seconds. Once the server is fully ready, please write stop into "
                     f"the console", Colors.blue_to_white, interval=0.01)
-        time.sleep(15)
+        time.sleep(5)
         os.system("cls & cd server & start.bat")
         Write.Print(f"\nYour server is ready! Don't forget to move the server folder to the desired location!", Colors.blue_to_white, interval=0.01)
