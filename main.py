@@ -79,14 +79,38 @@ while not correct_server:
         with open("server/eula.txt", "w") as file:
             file.write(f"eula=true")
 
-        ram = Write.Input(f"\n\nEnter the MB of RAM you want to allow for your server : ", Colors.blue_to_green, interval=0.01)
+        port = Write.Input(f"\nEnter the port you want to use for your server ? (default : 25565) : ",
+                           Colors.blue_to_green, interval=0.01)
+        if port:
+            with open("server/server.properties", "a") as file:
+                file.write(f"server-port={port}\n")
+
+        online = Write.Input(f"\nDo you want to verify user authentication ? (true/false) : ",
+                             Colors.blue_to_green, interval=0.01).lower()
+        if online:
+            with open("server/server.properties", "a") as file:
+                file.write(f"online-mode={online}\n")
+
+        players = Write.Input(f"\nHow many players can join the server simultaneous ?: ",
+                             Colors.blue_to_green, interval=0.01)
+        if players:
+            with open("server/server.properties", "a") as file:
+                file.write(f"max-players={players}\n")
+
+        whitelist = Write.Input(f"\nDo you want to enable the whitelist ? (true/false) : ",
+                              Colors.blue_to_green, interval=0.01).lower()
+        if whitelist:
+            with open("server/server.properties", "a") as file:
+                file.write(f"white-list={whitelist}\n")
+
+        ram = Write.Input(f"\nEnter the MB of RAM you want to allow for your server : ", Colors.blue_to_green,
+                          interval=0.01)
 
         with open("server/start.bat", "w") as file:
             file.write(f"@echo off\njava -jar -Xmx{ram}M server.jar\n")
 
         Write.Print(f"\nThe server will start in 5 seconds. Once the server is fully ready, please write stop into "
                     f"the console", Colors.blue_to_white, interval=0.01)
-        time.sleep(5)
+        time.sleep(15)
         os.system("cls & cd server & start.bat")
-
-        Write.Print(f"\nYour server is ready !", Colors.blue_to_white, interval=0.01)
+        Write.Print(f"\nYour server is ready! Don't forget to move the server folder to the desired location!", Colors.blue_to_white, interval=0.01)
