@@ -84,3 +84,9 @@ while not correct_server:
         with open("server/start.bat", "w") as file:
             file.write(f"@echo off\njava -jar -Xmx{ram}M server.jar\n")
 
+        Write.Print(f"\nThe server will start in 5 seconds. Once the server is fully ready, please write stop into "
+                    f"the console", Colors.blue_to_white, interval=0.01)
+        time.sleep(5)
+        os.system("cls & cd server & start.bat")
+
+        Write.Print(f"\nYour server is ready !", Colors.blue_to_white, interval=0.01)
