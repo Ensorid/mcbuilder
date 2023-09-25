@@ -9,7 +9,7 @@ from pystyle import Write, Colors, Center
 
 def checkUpdate():
     api_url = f'https://api.github.com/repos/ensorid/mcbuilder/releases/latest'
-    version = '1.0'
+    version = '0.1'
     try:
         response = requests.get(api_url)
 
@@ -91,7 +91,7 @@ while not correct_server:
             with open("server/server.properties", "a") as file:
                 file.write(f"online-mode={online}\n")
 
-        players = Write.Input(f"\nHow many players can join the server simultaneous ?: ",
+        players = Write.Input(f"\nHow many players can join the server simultaneously ?: ",
                              Colors.blue_to_green, interval=0.01)
         if players:
             with open("server/server.properties", "a") as file:
